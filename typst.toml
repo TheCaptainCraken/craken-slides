@@ -1,0 +1,10 @@
+[package]
+name = "craken-slides"
+version = "0.1.0"
+entrypoint = "craken.typ"
+authors = ["Pietro Agnoli"]
+description = "Captain Craken slides: 16:9 talks on maths and computer science, in Paper and Lantern."
+
+[template]
+path = "template"
+entrypoint = "main.typ"
