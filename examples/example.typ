@@ -1,4 +1,4 @@
-#import "@local/craken-slides:0.1.0": *
+#import "@preview/craken-slides:0.1.0": *
 
 #show: craken-slides.with(
   title: [Divide and conquer, gently],

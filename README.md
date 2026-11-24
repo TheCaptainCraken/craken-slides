@@ -1,29 +1,31 @@
-# Captain Craken slides for Typst
+# Captain Craken slides
 
 A 16:9 slide template for maths and computer science talks, built on the Captain Craken design system: its ten colours in Paper and Lantern, Fraunces, Newsreader, DM Mono and STIX Two Math, and the sucker as the only ornament.
 
-## Install
+## Start a talk
 
 ```sh
-./install.sh
+typst init @preview/craken-slides:0.1.0 my-talk
+cd my-talk
+typst compile main.typ                                # Paper
+typst compile --input theme=lantern main.typ          # Lantern (dark)
+typst watch main.typ                                  # while writing
 ```
 
-This installs the package as `@local/craken-slides:0.1.0` and copies the fonts to `~/.local/share/fonts/craken-slides` (on macOS, `~/Library/Fonts/craken-slides`), so you never need `--font-path`. DM Mono and STIX Two Math are skipped when they're already installed, for example by the Captain Craken book template. Run it again after changing the template.
+A talk starts with `#import "@preview/craken-slides:0.1.0": *`. [`examples/example.typ`](https://github.com/TheCaptainCraken/craken-slides/blob/v0.1.0/examples/example.typ) in the GitHub repository shows every slide type. In the Typst web app, choose *Start from template* and search for `craken-slides`.
 
-## Use
+To show a logo, put the image next to your talk and pass `logo: image("logo.png")`. In Lantern it sits on a light disc automatically.
 
-```sh
-typst init @local/craken-slides:0.1.0 my-talk         # start a new talk
-typst compile talk.typ                                # Paper
-typst compile --input theme=lantern talk.typ          # Lantern (dark)
-typst watch talk.typ                                  # while writing
-```
+## Fonts
 
-A talk starts with `#import "@local/craken-slides:0.1.0": *`. `examples/example.typ` shows every slide type.
+Typst packages can't ship fonts, so download them once: [craken-slides-fonts.zip](https://github.com/TheCaptainCraken/craken-slides/releases/download/v0.1.0/craken-slides-fonts.zip).
 
-`fonts/` holds static instances made from the variable fonts, because Typst can't set variation axes. Fraunces is fixed at `SOFT 100` (as the system asks). It ships as **Craken Display** (opsz 72, for titles) and **Craken Label** (opsz 18, for labels). Newsreader ships as **Craken Text**. The fonts were renamed because the OFL doesn't allow modified fonts to keep their reserved names. DM Mono and STIX Two Math are unmodified. Licences are in `fonts/`.
+- **On your computer:** install the `.ttf` files (double-click them, or copy them to `~/.local/share/fonts` on Linux). Or keep them in a folder and pass `--font-path path/to/fonts` to `typst compile` and `typst watch`.
+- **In the web app:** upload the `.ttf` files anywhere in your project. The web app picks them up.
 
-The logo isn't bundled. Put `captain-craken.png` next to your talk and pass `logo: image("captain-craken.png")`. In Lantern it sits on a light disc automatically.
+Without them the slides still compile, in Libertinus Serif, with a warning for each missing font.
+
+The zip holds static instances made from the variable fonts, because Typst can't set variation axes. Fraunces is fixed at `SOFT 100` (as the system asks). It ships as **Craken Display** (opsz 72, for titles) and **Craken Label** (opsz 18, for labels). Newsreader ships as **Craken Text**. The fonts were renamed because the OFL doesn't allow modified fonts to keep their reserved names. DM Mono and STIX Two Math are unmodified. All are under the SIL Open Font License; the licences are in the zip.
 
 ## Slides
 
@@ -48,3 +50,14 @@ The footer has one sucker per section (filled once you reach it) and the page nu
 - Figures: `canvas(width, height, node(..), edge(..), tag(..))` for diagrams, `plot(series: ((label: [$n^2$], f: x => x * x),), ..)` for charts
 - Layout: `cols(..)`, `note[..]` for asides, `section-break()`
 - Numbers include the section (Figure 2.1, Theorem 3.1, (2.1)). Display equations are numbered only when they have a label, and `@ref` always shows the target's own section.
+
+## Files
+
+- `craken.typ`: the slides.
+- `template/`: what `typst init` copies into a new talk.
+
+The [GitHub repository](https://github.com/TheCaptainCraken/craken-slides) also has the fonts, `examples/example.typ`, and `install.sh`, which installs the package and the fonts on Linux and macOS for working offline.
+
+## License
+
+The code and the starter files are under [MIT-0](LICENSE): use, change and share them however you like, no credit needed. The fonts are under the SIL Open Font License.

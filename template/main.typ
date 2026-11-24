@@ -1,13 +1,13 @@
-#import "@local/craken-slides:0.1.0": *
+#import "@preview/craken-slides:0.1.0": *
 
 #show: craken-slides.with(
   title: [Your talk title],
   subtitle: [One sentence that tells people why they should stay.],
-  author: "Pietro Agnoli",
+  author: "Your Name",
   date: [Month year],
   event: [Where you're giving it],
   // short-title: [Shorter title for the footer],
-  // logo: image("captain-craken.png"),
+  // logo: image("logo.png"),
   theme: sys.inputs.at("theme", default: "paper"),
 )
 

@@ -5,8 +5,12 @@
 // Fraunces for display, Newsreader for reading, DM Mono for code and
 // STIX Two Math for mathematics.
 //
-// Compile with the bundled fonts:
-//   typst compile --font-path fonts talk.typ
+//   typst init @preview/craken-slides:0.1.0 my-talk
+//   typst compile talk.typ                          (Paper)
+//   typst compile --input theme=lantern talk.typ    (Lantern, dark)
+//
+// The fonts are a separate download (see the README); without them the
+// slides fall back to Libertinus Serif.
 
 // ─────────────────────────────────────────────────────────────── tokens ──
 
@@ -59,11 +63,11 @@
 #let outline-width = px(2)
 
 #let fonts = (
-  display: "Craken Display", // Fraunces, SOFT 100, opsz 72
-  label: "Craken Label", // Fraunces, SOFT 100, opsz 18
-  text: "Craken Text", // Newsreader, opsz 18
-  mono: "DM Mono",
-  math: "STIX Two Math",
+  display: ("Craken Display", "Libertinus Serif"), // Fraunces, SOFT 100, opsz 72
+  label: ("Craken Label", "Libertinus Serif"), // Fraunces, SOFT 100, opsz 18
+  text: ("Craken Text", "Libertinus Serif"), // Newsreader, opsz 18
+  mono: ("DM Mono", "DejaVu Sans Mono"),
+  math: ("STIX Two Math", "New Computer Modern Math"),
 )
 
 #let _styles = (
